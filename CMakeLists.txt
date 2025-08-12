@@ -125,13 +125,20 @@ set(GEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/generated)
 
 # Custom target for processing assets
 add_custom_target(process_assets
-    #COMMAND ${CMAKE_COMMAND} -E echo "Processing GIF animations..."
-    #COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Tools/process_all_gifs.py
-    #COMMAND ${CMAKE_COMMAND} -E echo "Converting to binary format..."
-   # COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Tools/gifd_tools/json_to_binary_converter.py -r ${CMAKE_CURRENT_SOURCE_DIR}/Tools/gifdelta/batch_output/
-    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_dvd_logo_bm.py
+    COMMAND ${CMAKE_COMMAND} -E echo "Setting up asset conversion tools..."
+    COMMAND python3 -m pip install -r ${CMAKE_CURRENT_SOURCE_DIR}/Tools/requirements.txt
+    COMMAND ${CMAKE_COMMAND} -E echo "Testing asset conversion tools..."
+    COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/Tools/test_tools.py
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Processing game assets"
+    COMMENT "Setting up and testing asset conversion tools"
+)
+
+# Custom target for converting game assets (requires user-provided data)
+add_custom_target(convert_assets
+    COMMAND ${CMAKE_COMMAND} -E echo "Asset conversion requires user-provided World of Xeen data."
+    COMMAND ${CMAKE_COMMAND} -E echo "Usage: python3 Tools/xeen_convert_batch.py --input <path_to_game_data> --output <output_dir>"
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Asset conversion instructions"
 )
 
 # Generating ZIP

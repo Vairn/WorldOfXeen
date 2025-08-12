@@ -40,3 +40,5 @@ test/
 .vscode/SYMBOLS.DB-shm
 .vscode/SYMBOLS.DB-wal
 ref/
+xeendata/
+out/
