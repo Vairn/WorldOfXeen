@@ -1,0 +1,13 @@
+# World of Xeen Asset Conversion Tools - Python Dependencies
+
+# Core dependencies
+pillow>=9.0.0          # Image processing and preview generation
+numpy>=1.21.0          # Numerical operations for color quantization
+structlog>=21.0.0      # Structured logging (optional, falls back to standard logging)
+
+# Optional dependencies for enhanced functionality
+# matplotlib>=3.5.0    # For advanced visualization (uncomment if needed)
+# scikit-image>=0.19.0 # For advanced image processing (uncomment if needed)
+
+# HTML parsing for wiki data extraction
+beautifulsoup4>=4.9.0  # HTML parsing for extracting filename mappings from wiki
